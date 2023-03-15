@@ -97,7 +97,7 @@
 			children = (
 				1C1626B629C14CD400AE3F8B /* Readme.md */,
 				1C16268C29C14CAB00AE3F8B /* ChecklistApp.swift */,
-				1C16268E29C14CAB00AE3F8B /* ContentView.swift */,
+				1C81543729C191E200D996ED /* Views */,
 				1C16269029C14CAE00AE3F8B /* Assets.xcassets */,
 				1C16269229C14CAE00AE3F8B /* Preview Content */,
 			);
@@ -127,6 +127,14 @@
 				1C1626A929C14CAF00AE3F8B /* ChecklistUITestsLaunchTests.swift */,
 			);
 			path = ChecklistUITests;
+			sourceTree = "<group>";
+		};
+		1C81543729C191E200D996ED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1C16268E29C14CAB00AE3F8B /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -2,7 +2,7 @@
 ## First Milestone
 
 The purpose of this Readme is to demonstrate how I have completed the assignment.
-I will explain each step, how it was implemented and what I learned.
+I will explain my steps, how it was implemented and what I learned.
 
 ### 15/3/23
 Created the Readme by clicking File/New/File and choosing Empty for Documentation Template.
@@ -14,9 +14,12 @@ Used HStack, which formats objects vertically, to show each goal with its respec
 Added Image to HStack, added tick boxes to certain goals, but since I didn't have index[2] for certain goals, a Fatal error occured. Meaning I require an image/index[2] for each goal.
 Added filled and unfilled checkboxes to show which were completed. Solved fatal error.
 
-Converted HStack, into ExtractedView and renamed ListRowView
+Converted HStack, into ExtractedView and renamed ListRowView.
 In ListRowView, studyTask is referred to as item, course being item[0] and so on.
 Formatted ListRowView, like making course text bold, using Spacer() to align the tick boxes to the right of the screen
+
+Checked that formatting suited other iPhones, iPads and IPods. Goals are multiple lines of text. Tried to use linelimit(1), which cut off goal text for certain screens. Removed padding for course text, then used fixedSize() for course and goal text. Checked different screens again, looks good!
+
 
 ###??/?/??
 
