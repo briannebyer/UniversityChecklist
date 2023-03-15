@@ -44,6 +44,7 @@
 		1C1626A329C14CAF00AE3F8B /* ChecklistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChecklistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C1626A729C14CAF00AE3F8B /* ChecklistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistUITests.swift; sourceTree = "<group>"; };
 		1C1626A929C14CAF00AE3F8B /* ChecklistUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1C1626B629C14CD400AE3F8B /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +95,7 @@
 		1C16268B29C14CAB00AE3F8B /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
+				1C1626B629C14CD400AE3F8B /* Readme.md */,
 				1C16268C29C14CAB00AE3F8B /* ChecklistApp.swift */,
 				1C16268E29C14CAB00AE3F8B /* ContentView.swift */,
 				1C16269029C14CAE00AE3F8B /* Assets.xcassets */,

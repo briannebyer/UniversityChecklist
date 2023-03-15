@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+var studyTask = ["Complete quiz", "Start Assignment 1", "Read chapter", "Create prototype"]
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            List {
+                ForEach(studyTask, id:\.self){
+                    goal in Text(goal)
+                            }
+                }
+            }
+        }
     }
-}
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
