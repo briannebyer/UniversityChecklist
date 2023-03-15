@@ -20,6 +20,8 @@ Formatted ListRowView, like making course text bold, using Spacer() to align the
 
 Checked that formatting suited other iPhones, iPads and IPods. Goals are multiple lines of text. Tried to use linelimit(1), which cut off goal text for certain screens. Removed padding for course text, then used fixedSize() for course and goal text. Checked different screens again, looks good!
 
+Created View group, to add all SwiftUI views, as is best practice. 
+Created separate view for ListRowView and moved appropriate code from ContentView, into ListRowView.
 
 ###??/?/??
 
