@@ -11,7 +11,12 @@ Used VStack, which formats objects vertically, to show each goal in studyTasks
 
 Added the associated course to each goal into studyTasks list
 Used HStack, which formats objects vertically, to show each goal with its respective course.
-Added Image, tick boxes to certain goals, but since I didn't have index[2] for certain goals, a Fatal error occured. Meaning I require an image/index[2] for each goal.
+Added Image to HStack, added tick boxes to certain goals, but since I didn't have index[2] for certain goals, a Fatal error occured. Meaning I require an image/index[2] for each goal.
+Added filled and unfilled checkboxes to show which were completed. Solved fatal error.
+
+Converted HStack, into ExtractedView and renamed ListRowView
+In ListRowView, studyTask is referred to as item, course being item[0] and so on.
+Formatted ListRowView, like making course text bold, using Spacer() to align the tick boxes to the right of the screen
 
 ###??/?/??
 

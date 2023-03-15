@@ -14,11 +14,7 @@ struct ContentView: View {
         VStack {
             List {
                 ForEach(studyTask, id:\.self){
-                    studyTask in HStack{
-                        Text(studyTask[0])
-                        Text(studyTask[1])
-                        Image(systemName:studyTask[2])
-                            }
+                    studyTask in ListRowView(item: studyTask)
                         }
                 }
             }
@@ -33,3 +29,15 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
+struct ListRowView: View {
+    var item: [String]
+    var body: some View {
+        HStack{
+            Text(item[0]).bold().padding()
+            Text(item[1])
+            Spacer()
+            Image(systemName:item[2])
+        }
+    }
+}
