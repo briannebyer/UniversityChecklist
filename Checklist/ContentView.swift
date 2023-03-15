@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-var studyTask = ["Complete quiz", "Start Assignment 1", "Read chapter", "Create prototype"]
+var studyTask = [["3032ICT", "Complete quiz", "checkmark.square"],["3705ICT","Start Assignment 1", "checkmark.square.fill"], ["3705ICT", "Read chapter", "checkmark.square.fill"], ["3701ICT", "Create prototype", "checkmark.square"]]
 
 struct ContentView: View {
     var body: some View {
         VStack {
             List {
                 ForEach(studyTask, id:\.self){
-                    goal in Text(goal)
+                    studyTask in HStack{
+                        Text(studyTask[0])
+                        Text(studyTask[1])
+                        Image(systemName:studyTask[2])
                             }
+                        }
                 }
             }
         }
@@ -28,3 +32,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
