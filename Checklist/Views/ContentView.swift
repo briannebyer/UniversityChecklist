@@ -12,11 +12,12 @@ var studyTask = [["3032ICT", "Complete quiz", "checkmark.square"],["3705ICT","St
 struct ContentView: View {
     var body: some View {
         VStack {
+            TitleView(title: "University Tasks", img: "book")
             List {
                 ForEach(studyTask, id:\.self){
                     studyTask in ListRowView(item: studyTask)
                         }
                 }
-            }
         }
     }
+}

@@ -23,6 +23,17 @@ Checked that formatting suited other iPhones, iPads and IPods. Goals are multipl
 Created View group, to add all SwiftUI views, as is best practice. 
 Created separate view for ListRowView and moved appropriate code from ContentView, into ListRowView.
 
-###??/?/??
+Wanted to create a Title for the Content View. 
+
+###23/3/23
+Created Documentation, which will be used in M2
+Created DataModel, grouped under Models, to use for testing later
+Created TitleView, placed under group Views
+Played around with formatting book image and title
+Called TitleView in ContentView, so it is viewable. Removed previous Text("University Courses").
+
+###24/3/23
+
+
 
 ##First Milestone Video: https://www.youtube.com/xxxxx

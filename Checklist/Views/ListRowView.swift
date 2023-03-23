@@ -10,6 +10,7 @@ import SwiftUI
 struct ListRowView: View {
     var item: [String]
     var body: some View {
+        
         HStack{
             Text(item[0]).bold().fixedSize()
             Text(item[1]).fixedSize()
