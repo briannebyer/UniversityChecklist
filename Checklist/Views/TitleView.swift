@@ -12,8 +12,12 @@ struct TitleView: View {
     @State var img: String
     var body: some View {
         HStack {
-            Text(title).font(.title).bold().padding()
-            Image(systemName: img).imageScale(.large)
+            Text(title)
+                .font(.title)
+                .bold()
+                .padding()
+            Image(systemName: img)
+                .imageScale(.large)
         }
     }
 }
