@@ -10,7 +10,7 @@ Created a list, called studyTasks, with 4 values (goals).
 Used VStack, which formats objects vertically, to show each goal in studyTasks
 
 Added the associated course to each goal into studyTasks list
-Used HStack, which formats objects vertically, to show each goal with its respective course.
+Used HStack, which formats objects horizontally, to show each goal with its respective course.
 Added Image to HStack, added tick boxes to certain goals, but since I didn't have index[2] for certain goals, a Fatal error occured. Meaning I require an image/index[2] for each goal.
 Added filled and unfilled checkboxes to show which were completed. Solved fatal error.
 
@@ -44,4 +44,4 @@ Tested that each task had correct course code.
 Tested that each task had correct description.
 Completed Milestone 1, tagged commit for reference.
 
-##First Milestone Video: https://www.youtube.com/xxxxx
+##First Milestone Video: https://youtu.be/LouxmF9kHLI
