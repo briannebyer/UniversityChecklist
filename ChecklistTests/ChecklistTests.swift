@@ -32,9 +32,10 @@ class ChecklistTests: XCTestCase {
         XCTAssertEqual(fourthTask.course, "3701ICT")
         
         // check that each task has correct description
-        
-        
-        
+        XCTAssertEqual(firstTask.task, "Complete quiz")
+        XCTAssertEqual(secondTask.task, "Start Assignment 1")
+        XCTAssertEqual(thirdTask.task, "Read chapter")
+        XCTAssertEqual(fourthTask.task, "Create prototype")
     }
 
     func testPerformanceExample() throws {
