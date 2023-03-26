@@ -37,6 +37,11 @@ Went into DataModel, started to create a struct for Study. Learnt that UUID() cr
 
 General formatting/cleaning of code to make it easier to understand
 
-Testing...
+Had confusion with pushing and pulling to GitHub, so fixed those issues.
+Had issues making tests work, even though they should pass. Found out I accidentally made breakdpoints and deleted them. It now works!
+Tested that each task had correct course code.
+
+Tested that each task had correct description.
+Completed Milestone 1, tagged commit for reference.
 
 ##First Milestone Video: https://www.youtube.com/xxxxx

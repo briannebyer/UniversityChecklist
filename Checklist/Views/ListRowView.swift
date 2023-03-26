@@ -8,24 +8,17 @@
 import SwiftUI
 
 struct ListRowView: View {
-    @State var model: [Study]
+    var item: [String]
     var body: some View {
         
         HStack {
-            Text(task.course)
+            Text(item[0])
                 .bold()
                 .fixedSize()
-            Text(task.task)
+            Text(item[1])
                 .fixedSize()
             Spacer()
-            Image(systemName: task.checkbox)
+            Image(systemName: item[2])
         }
-    }
-}
-
-
-struct ListRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListRowView(model: testStudy)
     }
 }

@@ -21,7 +21,6 @@ struct ContentView: View {
             List {
                 ForEach(studyTask, id:\.self){
                     studyTask in ListRowView(item: studyTask)
-                    
                 }
             }
         }
