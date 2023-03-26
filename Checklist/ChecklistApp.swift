@@ -11,7 +11,6 @@ import SwiftUI
 struct ChecklistApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
         }
     }
 }

@@ -35,6 +35,8 @@ Called TitleView in ContentView, so it is viewable. Removed previous Text("Unive
 ###26/3/23
 Went into DataModel, started to create a struct for Study. Learnt that UUID() creates a universally unique variable. Initially had issues created the struct Study, as I had used "=" for each member, which caused an error. Realised "=" declares a mutable value and assigns an instance, whereas, ":" declares a mutable value and assigns the type of the variable.
 
+General formatting/cleaning of code to make it easier to understand
 
+Testing...
 
 ##First Milestone Video: https://www.youtube.com/xxxxx

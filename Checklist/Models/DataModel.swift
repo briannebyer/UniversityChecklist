@@ -19,6 +19,4 @@ var testStudy = [
     Study(course: "3705ICT" , task: "Start Assignment 1", checkbox: "checkmark.square.fill"),
     Study(course: "3705ICT", task: "Read chapter", checkbox: "checkmark.square.fill"),
     Study(course: "3701ICT" , task: "Create prototype", checkbox: "checkmark.square")
-    
 ]
-
