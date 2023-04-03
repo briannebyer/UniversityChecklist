@@ -13,6 +13,7 @@ var studyTask = [["3032ICT", "Complete quiz", "checkmark.square"],
                  ["3701ICT", "Create prototype", "checkmark.square"]]
 
 struct ContentView: View {
+    @Binding var model: DataModel
     var body: some View {
         VStack {
             

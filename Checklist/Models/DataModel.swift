@@ -14,6 +14,10 @@ struct Study: Identifiable {
     var checkbox: String
 }
 
+struct DataModel {
+    var Courses: [Study]
+}
+
 var testStudy = [
     Study(course: "3032ICT" , task: "Complete quiz", checkbox: "checkmark.square"),
     Study(course: "3705ICT" , task: "Start Assignment 1", checkbox: "checkmark.square.fill"),

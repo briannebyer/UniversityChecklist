@@ -45,3 +45,13 @@ Tested that each task had correct description.
 Completed Milestone 1, tagged commit for reference.
 
 ##First Milestone Video: https://youtu.be/LouxmF9kHLI
+
+
+## Second Milestone
+### 04/04/23
+Created a struct for DataModel, which uses values from testStudy.
+In Checklist App, added DataModel so that it can be referred to throughout application.
+Specified in ContentView that the DataModel (model) is binding, meaning that instead of creating new instance for all properties, it is connected to the original data course. ContentView is now connected to original data source and can modify said source.
+
+
+##Second Milestone Video: https://youtu.be/LouxmF9kHLI
