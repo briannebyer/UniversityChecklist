@@ -53,5 +53,13 @@ Created a struct for DataModel, which uses values from testStudy.
 In Checklist App, added DataModel so that it can be referred to throughout application.
 Specified in ContentView that the DataModel (model) is binding, meaning that instead of creating new instance for all properties, it is connected to the original data course. ContentView is now connected to original data source and can modify said source.
 
+Removed studyTask, as ContentView will now be used DataModel values.
+Added NavigationView, in order to navigate to each individual course and its respective tasks.
+Refers to model in List{}, showing each course in testStudy.
+Added courseName to data source
+Created extension of Study struct, to create course, which includes courseCode and courseName.
+In List{}, course is shown.
+
+
 
 ##Second Milestone Video: https://youtu.be/LouxmF9kHLI

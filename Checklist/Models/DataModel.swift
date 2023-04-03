@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Study: Identifiable {
+struct Study: Identifiable, Hashable {
     var id = UUID()
-    var course: String
+    var courseCode: String
+    var courseName: String
     var task: String
     var checkbox: String
 }
@@ -19,8 +20,13 @@ struct DataModel {
 }
 
 var testStudy = [
-    Study(course: "3032ICT" , task: "Complete quiz", checkbox: "checkmark.square"),
-    Study(course: "3705ICT" , task: "Start Assignment 1", checkbox: "checkmark.square.fill"),
-    Study(course: "3705ICT", task: "Read chapter", checkbox: "checkmark.square.fill"),
-    Study(course: "3701ICT" , task: "Create prototype", checkbox: "checkmark.square")
+    Study(courseCode: "3032ICT", courseName: "Big Data Analytics and Social Media", task: "Complete quiz", checkbox: "checkmark.square"),
+    Study(courseCode: "3705ICT", courseName: "Virtual and Augmented Reality", task: "Read chapter", checkbox: "checkmark.square.fill"),
+    Study(courseCode: "3701ICT" , courseName: "Mobile Application Development", task: "Create prototype", checkbox: "checkmark.square")
 ]
+
+extension Study {
+    var course: String {
+        return "\(courseCode) \(courseName)"
+    }
+}
