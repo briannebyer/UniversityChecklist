@@ -11,8 +11,8 @@ struct Study: Identifiable, Hashable {
     var id = UUID()
     var courseCode: String
     var courseName: String
-    var task: String
-    var checkbox: String
+    var task: String?
+    var checkbox: String?
 }
 
 struct DataModel {

@@ -60,6 +60,11 @@ Added courseName to data source
 Created extension of Study struct, to create course, which includes courseCode and courseName.
 In List{}, course is shown.
 
+Added navigationTitle, as "My Courses"
+Used navigationBarItems, to add the EditButton and "plus" Button.
+Found when wanting to add a new course, that I could not only call courseName and courseCode, so made values such as task and checkbox optional in DataModel. 
+Used .onDelete, allows any course in list to be removed.
+Used .onMove, allows any course to be moved within the list.
 
 
 ##Second Milestone Video: https://youtu.be/LouxmF9kHLI
