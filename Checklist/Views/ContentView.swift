@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var model: DataModel
-    @State var myTitle = "My Courses"
     var body: some View {
         NavigationView {
             
@@ -18,8 +17,11 @@ struct ContentView: View {
                 TitleView(title: "University Tasks", img: "book")
                 
                 List {
-                    ForEach(model.Courses,id:\.self) {
-                        studyTask in Text(studyTask.course)
+                    ForEach($model.Courses,id:\.self) {
+                        $studyTask in
+                        NavigationLink(destination: DetailView(Course: $studyTask)){
+                            Text(studyTask.course)
+                        }
                         
                     }.onDelete { idx in model.Courses.remove(atOffsets: idx)
                         
@@ -27,8 +29,7 @@ struct ContentView: View {
                         model.Courses.move(fromOffsets: idx, toOffset: i)
                     }
                 }
-            }.navigationTitle(myTitle)
-                .navigationBarItems(leading: EditButton(), trailing: Button("+"){
+            }.navigationBarItems(leading: EditButton(), trailing: Button("+"){
                     model.Courses.append(Study(courseCode: "New", courseName: "Course"))
                 })
         }

@@ -66,5 +66,11 @@ Found when wanting to add a new course, that I could not only call courseName an
 Used .onDelete, allows any course in list to be removed.
 Used .onMove, allows any course to be moved within the list.
 
+Removed navigationTitle, as TitleView is being used.
+Used NavigationLink, as each course has a separate page, with any of its associated tasks.
+Created DetailView, which will show each courses associated tasks.
+Grouped DetailView, under Views group, as is best practice.
+Specified in DetailView that the DataModel (model) is binding, meaning that instead of creating new instance for all properties, it is connected to the original data course. DetailView is now connected to original data source and can modify said source.
+
 
 ##Second Milestone Video: https://youtu.be/LouxmF9kHLI
