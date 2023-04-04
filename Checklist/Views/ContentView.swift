@@ -18,9 +18,14 @@ struct ContentView: View {
                 
                 List {
                     ForEach($model.Courses,id:\.self) {
+                        
                         $studyTask in
                         NavigationLink(destination: DetailView(Course: $studyTask)){
-                            Text(studyTask.course)
+                            Text(studyTask.courseCode)
+                                .bold()
+                                .fixedSize()
+                                .padding()
+                            Text(studyTask.courseName)
                         }
                         
                     }.onDelete { idx in model.Courses.remove(atOffsets: idx)

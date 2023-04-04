@@ -72,5 +72,9 @@ Created DetailView, which will show each courses associated tasks.
 Grouped DetailView, under Views group, as is best practice.
 Specified in DetailView that the DataModel (model) is binding, meaning that instead of creating new instance for all properties, it is connected to the original data course. DetailView is now connected to original data source and can modify said source.
 
+Changing formatting and data displayed for ContentView, to be more useable.
+Checked the formatting was viable for other screens and devices, as most testing has been done on the iPhone 11.
+
+
 
 ##Second Milestone Video: https://youtu.be/LouxmF9kHLI

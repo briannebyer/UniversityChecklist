@@ -17,6 +17,8 @@ struct DetailView: View {
             
             Text("You can change course code")
             TextField("Change course code here", text: $displayName)
+            
+            Spacer()
         }.onAppear{
             displayName = Course.courseCode
         }.onDisappear {
