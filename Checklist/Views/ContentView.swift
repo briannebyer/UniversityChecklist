@@ -32,6 +32,7 @@ struct ContentView: View {
                     }.onMove { idx, i in
                         model.Courses.move(fromOffsets: idx, toOffset: i)
                     }
+                    // ensures TitleView and navigationBarItems look aesthetically pleasing
                 }.navigationBarTitle("", displayMode: .inline)
             }
             .navigationBarItems(leading: EditButton(), trailing: Button("+"){

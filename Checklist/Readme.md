@@ -84,9 +84,10 @@ This casued issues in my ContentView(), as I need to update it to suit new DataM
 In DetailView, user can change the courseName instead of courseCode (e.g. Big Data Analytics to BDA), and can also change the courseCode.
 In ContentView(), when user adds a new course, changed the default values to Code and Course Name.
 In DetailView, formatted courseName and courseCode in HStack, used padding() and coloured gray, to indicate to users these can be changed.
-Noticed that when using TitleView with NavigationView in ContentView and DetailView, the UI does not look great. This was frustrating as I searched online, StackOverFlow recommended to move the navigationBarItems outside of VStack, it already was. I then decided to create a toolbar instead of using the.navigationBarItems modifier. Thsi did not work. Ultimately, I decided to alter the TitleView itself and this solved my UI problem.
+Noticed that when using TitleView with NavigationView in ContentView and DetailView, the UI does not look great. This was frustrating as I searched online, StackOverFlow recommended to move the navigationBarItems outside of VStack, it already was. I then decided to create a toolbar instead of using the.navigationBarItems modifier. This did not work. Ultimately, I decided to alter the TitleView itself and this solved my UI problem.
 
+DetailView needs to allow user to interact with tasks, edit/delete and reset the status of each task. I follow similar logic and structure used in ContentView. Comments in DetailView describe specific changes I made. I have found that when user clicks on tasks, to indicate whether it is completed or not, DetailView jumps back to ContentView. I keep jumping to ContentView probably because I am pushing DetailView onto the navigation stack using NavigationLink. I need to embed DetailView in a NavigationView, e.g. @ObservableState?
 
-
+### 06/04/23
 
 ##Second Milestone Video: 
