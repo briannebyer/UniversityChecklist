@@ -13,14 +13,15 @@ struct DetailView: View {
     var body: some View {
         VStack {
             
-            TitleView(title: Course.courseCode, img: "star.fill")
-            
-            Text("You can change course code")
+            TitleView(title: Course.courseName, img: "star.fill")
+
             TextField("Change course code here", text: $displayName)
             
             Spacer()
+            
+        
         }.onAppear{
-            displayName = Course.courseCode
+            displayName = Course.courseName
         }.onDisappear {
             Course.courseCode = displayName
         }

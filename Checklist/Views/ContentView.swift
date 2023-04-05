@@ -11,21 +11,20 @@ struct ContentView: View {
     @Binding var model: DataModel
     var body: some View {
         NavigationView {
-            
             VStack {
                 
                 TitleView(title: "University Tasks", img: "book")
                 
                 List {
                     ForEach($model.Courses,id:\.self) {
-                        
-                        $studyTask in
-                        NavigationLink(destination: DetailView(Course: $studyTask)){
-                            Text(studyTask.courseCode)
+                        // studyTask not defined in the ForEach loop, changed to $course instead
+                        $course in
+                        NavigationLink(destination: DetailView(Course: $course)){
+                            Text(course.courseCode)
                                 .bold()
                                 .fixedSize()
                                 .padding()
-                            Text(studyTask.courseName)
+                            Text(course.courseName)
                         }
                         
                     }.onDelete { idx in model.Courses.remove(atOffsets: idx)
@@ -35,7 +34,8 @@ struct ContentView: View {
                     }
                 }
             }.navigationBarItems(leading: EditButton(), trailing: Button("+"){
-                    model.Courses.append(Study(courseCode: "New", courseName: "Course"))
+                // added tasks: [] to the Study initializer, required parameter for the Study struct.
+                model.Courses.append(Study(courseCode: "New", courseName: "Course", tasks: []))
                 })
         }
     }
