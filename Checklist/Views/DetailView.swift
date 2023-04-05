@@ -8,28 +8,45 @@
 import SwiftUI
 
 struct DetailView: View {
-    @Binding var Course: Study
+    @Binding var course: Study
     @State var displayName: String = ""
+    @State var displayCode: String = ""
     var body: some View {
         VStack {
             
-            TitleView(title: Course.courseName, img: "star.fill")
-
-            TextField("Change course code here", text: $displayName)
-            
+            TitleView(title: course.courseName, img: "star.fill")
             Spacer()
             
+            HStack (alignment: .center){
+                TextField("Course name?", text: $displayName)
+                    .padding()
+                    .foregroundColor(.gray)
+                TextField("Course code?", text: $displayCode)
+                    .padding()
+                    .foregroundColor(.gray)
+            }
+            
+            List(course.tasks) { task in
+                            HStack {
+                                Text(task.description)
+                                if task.isCompleted {
+                                    Image(systemName: "checkmark")
+                                } 
+                            }
+                    }
         
         }.onAppear{
-            displayName = Course.courseName
+            displayName = course.courseName
+            displayCode = course.courseCode
         }.onDisappear {
-            Course.courseCode = displayName
+            course.courseName = displayName
+            course.courseCode = displayCode
         }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(Course:.constant(testStudy[0]))
+        DetailView(course:.constant(testStudy[0]))
     }
 }

@@ -76,11 +76,15 @@ Changing formatting and data displayed for ContentView, to be more useable.
 Checked the formatting was viable for other screens and devices, as most testing has been done on the iPhone 11.
 
 ### 05/04/23
-In DetailView, user can change the courseName instead of courseCode (e.g. Big Data Analytics to BDA)
 This is where I felt lost in the project. I decided to review Larry's code supplied to help students. Realised I need to create a parent list (which would be the courses) and then a child list (which would be its tasks, and whether it has been completed)
 Created struct StudyTask, which will represent each courses individual tasks.
 Inside testStudy, Study() has its own course (parent), then inside that course, is the list of StudyTask allocated to specific course (child)
 This casued issues in my ContentView(), as I need to update it to suit new DataModel. Comments in ContentView describes changes required. I found my app to be buggy after these changes.
+
+In DetailView, user can change the courseName instead of courseCode (e.g. Big Data Analytics to BDA), and can also change the courseCode.
+In ContentView(), when user adds a new course, changed the default values to Code and Course Name.
+In DetailView, formatted courseName and courseCode in HStack, used padding() and coloured gray, to indicate to users these can be changed.
+Noticed that when using TitleView with NavigationView in ContentView and DetailView, the UI does not look great. This was frustrating as I searched online, StackOverFlow recommended to move the navigationBarItems outside of VStack, it already was. I then decided to create a toolbar instead of using the.navigationBarItems modifier. Thsi did not work. Ultimately, I decided to alter the TitleView itself and this solved my UI problem.
 
 
 
