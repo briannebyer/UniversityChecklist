@@ -13,18 +13,19 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 
-                TitleView(title: "University Tasks", img: "book")
+                TitleView(title: "University Courses", img: "book")
                 
                 List {
                     ForEach($model.Courses,id:\.self) {
                         // studyTask not defined in the ForEach loop, changed to $course instead
                         $course in
                         NavigationLink(destination: DetailView(course: $course)){
-                            Text(course.courseCode)
-                                .bold()
-                                .fixedSize()
-                                .padding()
-                            Text(course.courseName)
+                            VStack(alignment: .leading){
+                                Text(course.courseCode)
+                                    .font(.subheadline)
+                                Text(course.courseName)
+                                    .font(.caption)
+                            }.padding()
                         }
                         
                     }.onDelete { idx in model.Courses.remove(atOffsets: idx)

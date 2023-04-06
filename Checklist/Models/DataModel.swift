@@ -22,6 +22,7 @@ struct StudyTask: Identifiable, Hashable {
     var isCompleted: Bool
 }
 
+// To be able to save changes, and show in DetailView...
 struct DataModel {
     var Courses: [Study]
 }

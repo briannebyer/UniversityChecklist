@@ -15,6 +15,8 @@ struct DetailView: View {
     @State var showResetConfirmation = false
     // for undo functionality, returning to previous state
     @State var undoTasks: [StudyTask]?
+    // for the ability to return to ContentView
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -22,9 +24,11 @@ struct DetailView: View {
             Spacer()
             HStack(alignment: .center) {
                 TextField("Course name?", text: $displayName)
+                    .font(.caption)
                     .padding()
                     .foregroundColor(.gray)
                 TextField("Course code?", text: $displayCode)
+                    .font(.caption)
                     .padding()
                     .foregroundColor(.gray)
             }
@@ -43,6 +47,7 @@ struct DetailView: View {
                             }
                         // shows task description
                         Text(task.description)
+                            .font(.subheadline)
                     }
                     // similar to ContentView, but targets course tasks, removes task
                 }.onDelete { idx in
@@ -53,7 +58,16 @@ struct DetailView: View {
                 }
             }
         }
+        // ensures default back button is hidden
+        .navigationBarBackButtonHidden(true)
         .navigationBarItems(
+            // adds "Back" button
+            leading: Button(action: {
+                // takes back to ContentView
+                presentationMode.wrappedValue.dismiss()
+            }){
+                Text("Back")
+            },
             trailing: HStack {
                 // only displays EditButton if there are any tasks to edit
                 if course.tasks.count > 0 {

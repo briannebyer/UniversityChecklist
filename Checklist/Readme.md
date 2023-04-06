@@ -89,5 +89,10 @@ Noticed that when using TitleView with NavigationView in ContentView and DetailV
 DetailView needs to allow user to interact with tasks, edit/delete and reset the status of each task. I follow similar logic and structure used in ContentView. Comments in DetailView describe specific changes I made. I have found that when user clicks on tasks, to indicate whether it is completed or not, DetailView jumps back to ContentView. I keep jumping to ContentView probably because I am pushing DetailView onto the navigation stack using NavigationLink. I need to embed DetailView in a NavigationView, e.g. @ObservableState?
 
 ### 06/04/23
+Disliked how while "University Courses" is supposed to be the title, that each course was larger in font and that the course list was unappealing looking in other iOS devices. Played around with .font() to get the desired appearance. Changed Hstack to Vstack.
+Wanted to format DetailView further, to suit the new formatted ContentView. Used the font caption to minimise the textfields of course code and course name. Used subheadline for task description. 
+While changing aesthetics, one requirement of M2 was to change the back button from its default arrow to the word "Back". Hid the default back button, then created a new "Back" button to take its place. This pops DetailView (child view) off the current stack, and returns to ContentView (parent view). 
+
+
 
 ##Second Milestone Video: 
