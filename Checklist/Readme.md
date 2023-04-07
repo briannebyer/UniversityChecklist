@@ -93,6 +93,9 @@ Disliked how while "University Courses" is supposed to be the title, that each c
 Wanted to format DetailView further, to suit the new formatted ContentView. Used the font caption to minimise the textfields of course code and course name. Used subheadline for task description. 
 While changing aesthetics, one requirement of M2 was to change the back button from its default arrow to the word "Back". Hid the default back button, then created a new "Back" button to take its place. This pops DetailView (child view) off the current stack, and returns to ContentView (parent view). 
 
+### 07/04/23
+When editing tasks in DetailView, another requirement of Milestone 2 is to allow new entries of tasks. I uncommented the code I created previously for adding new tasks, however, the user will not be able to change task description. Ensured user can change the task description but I put the button with the other buttons in the navigation tool bar, which makes the toolbar overcrowded. Moved Add button to under the default tasks, which is more user friendly.
+Used trial and error to make the new task seamlessly integrate with the task list.
 
-
+### approved extension for the 7th of April, 11:59pm, thank you!
 ##Second Milestone Video: 

@@ -11,6 +11,8 @@ struct DetailView: View {
     @Binding var course: Study
     @State var displayName: String = ""
     @State var displayCode: String = ""
+    // allowing the user to add a new task and change said description
+    @State var newTaskDescription = ""
     // for reset functionality
     @State var showResetConfirmation = false
     // for undo functionality, returning to previous state
@@ -48,6 +50,7 @@ struct DetailView: View {
                         // shows task description
                         Text(task.description)
                             .font(.subheadline)
+                        
                     }
                     // similar to ContentView, but targets course tasks, removes task
                 }.onDelete { idx in
@@ -56,7 +59,23 @@ struct DetailView: View {
                 }.onMove { idx, newOffset in
                     course.tasks.move(fromOffsets: idx, toOffset: newOffset)
                 }
-            }
+                
+                Button(action: {
+                    // add new task
+                    let newTask = StudyTask(description: newTaskDescription, isCompleted: false)
+                    course.tasks.append(newTask)
+                    // reset new task description, for when a new task, with a new description is added
+                    newTaskDescription = ""
+                        }){
+                            HStack{
+                                Image(systemName: "plus.circle.fill")
+                                TextField("New task?", text: $newTaskDescription)
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
+                            }
+                            
+                        }
+                }
         }
         // ensures default back button is hidden
         .navigationBarBackButtonHidden(true)
@@ -73,14 +92,6 @@ struct DetailView: View {
                 if course.tasks.count > 0 {
                     EditButton()
                 }
-                /* Not needed for M2, maybe for Assignment 2?
-                Button(action: {
-                    // add new task
-                    let newTask = StudyTask(description: "New task", isCompleted: false)
-                    course.tasks.append(newTask)
-                }){
-                    Image(systemName:"+")
-                }*/
                 Button(action: {
                     // show confirmation dialog
                     showResetConfirmation = true
@@ -108,7 +119,7 @@ struct DetailView: View {
                             }
                         },
                         // restores to previous state if user clicks cancel
-                        secondaryButton: .cancel(Text("Cancel")) {
+                        secondaryButton: .cancel(Text("Undo")) {
                             course.tasks = undoTasks ?? course.tasks
                         }
                     )
