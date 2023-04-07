@@ -102,10 +102,10 @@ In CheckList Tests, my first function, testCourseCode, checks whether each cours
 My third function, testTasksCount, checks whether each course has the correct amount of default tasks, which should be 2. The test passed.
 My fourth function, testToggle, checks whether the toggle functionality works. I first checked that the first course and its first task worked, the test passed. I then continued to test the first course and its second task, the test passed. This should be applicable for all courses and their tasks.
 
-Checked that UI works for various devices and iOS versions.
 Went through code to properly comment any functions, methods and structs.
 
-
+Built documentation (DocC) for application.
+Added video for Milestone 2 and tagged commit as "milestone2".
 
 ### approved extension for the 7th of April, 11:59pm, thank you!
-##Second Milestone Video: 
+##Second Milestone Video: https://youtu.be/rqf8ZxKWsA4
