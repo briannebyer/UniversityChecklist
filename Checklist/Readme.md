@@ -105,7 +105,8 @@ My fourth function, testToggle, checks whether the toggle functionality works. I
 Went through code to properly comment any functions, methods and structs.
 
 Built documentation (DocC) for application.
-Added video for Milestone 2 and tagged commit as "milestone2".
+Added video for Milestone 2.
+Tagged commit as "milestone2" and tagged "milestone 1".
 
 ### approved extension for the 7th of April, 11:59pm, thank you!
 ##Second Milestone Video: https://youtu.be/rqf8ZxKWsA4
