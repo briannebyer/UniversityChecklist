@@ -97,5 +97,12 @@ While changing aesthetics, one requirement of M2 was to change the back button f
 When editing tasks in DetailView, another requirement of Milestone 2 is to allow new entries of tasks. I uncommented the code I created previously for adding new tasks, however, the user will not be able to change task description. Ensured user can change the task description but I put the button with the other buttons in the navigation tool bar, which makes the toolbar overcrowded. Moved Add button to under the default tasks, which is more user friendly.
 Used trial and error to make the new task seamlessly integrate with the task list.
 
+Deleted ListRowView, as it is no longer needed for Milestone 2.
+In CheckList Tests, my first function, testCourseCode, checks whether each course has the correct course code as its value. My second function, testCourseName, checks whether each course has the correct course name, as its value. Both pass the test.
+My third function, testTasksCount, checks whether each course has the correct amount of default tasks, which should be 2. The test passed.
+My fourth function, testToggle, checks whether the toggle functionality works. I first checked that the first course and its first task worked, the test passed. I then continued to test the first course and its second task, the test passed. This should be applicable for all courses and their tasks.
+
+
+
 ### approved extension for the 7th of April, 11:59pm, thank you!
 ##Second Milestone Video: 
