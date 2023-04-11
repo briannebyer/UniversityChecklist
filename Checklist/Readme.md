@@ -110,3 +110,6 @@ Tagged commit as "milestone2" and tagged "milestone 1".
 
 ### approved extension for the 7th of April, 11:59pm, thank you!
 ##Second Milestone Video: https://youtu.be/rqf8ZxKWsA4
+
+### 11/04/23
+Added icon for checklist application. 
