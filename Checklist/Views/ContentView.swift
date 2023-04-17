@@ -28,10 +28,14 @@ struct ContentView: View {
                             }.padding()
                         }
                         
-                    }.onDelete { idx in model.Courses.remove(atOffsets: idx)
-                        
+                    }.onDelete { idx in
+                        model.Courses.remove(atOffsets: idx)
+                        // save to JSON file
+                        model.save()
                     }.onMove { idx, i in
                         model.Courses.move(fromOffsets: idx, toOffset: i)
+                        // save to JSON file
+                        model.save()
                     }
                     // ensures TitleView and navigationBarItems look aesthetically pleasing
                 }.navigationBarTitle("", displayMode: .inline)
@@ -39,6 +43,8 @@ struct ContentView: View {
             .navigationBarItems(leading: EditButton(), trailing: Button("+"){
                 // added tasks: [] to the Study initializer, required parameter for the Study struct.
                 model.Courses.append(Study(courseCode: "New", courseName: "Course", tasks: []))
+                // save to JSON file
+                model.save()
             })
         }
     }

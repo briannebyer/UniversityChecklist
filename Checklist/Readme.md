@@ -121,4 +121,7 @@ Created func to get JSON file.
 Created func to load and save JSON file.
 Initialised use of funcs and data in DataModel struct.
 
+Added model.save throughout ContentView, tested if it worked. It did.
+However, noticed when adding a new course, new courses do not have new tasks. Meaning, I had to remove the conditional (requiring at least 1 task) in DetailView, so that you can add tasks to new tasks.
+
 ##Third (Final) Milestone Video:

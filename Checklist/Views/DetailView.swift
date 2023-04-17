@@ -100,10 +100,8 @@ struct DetailView: View {
                 Text("Back")
             },
             trailing: HStack {
-                // only displays EditButton if there are any tasks to edit
-                if course.tasks.count > 0 {
-                    EditButton()
-                }
+                // removed conditional for EditButton
+               EditButton()
                 Button(action: {
                     // show confirmation dialog
                     showResetConfirmation = true
