@@ -115,6 +115,6 @@ Tagged commit as "milestone2" and tagged "milestone 1".
 Added icon for checklist application. 
 
 ### 17/4/23
-After reviewing Milestone 2 again, I noticed that the list and title should only be editable when user presses the edit button. Used @Environment to make a specific mode for editing. If mode is active, that is when the user can alter the courseCode and courseName.
+After reviewing Milestone 2 again, I noticed that the list and title should only be editable when user presses the edit button. Used @Environment to make a specific mode for editing. If mode is active, that is when the user can alter the courseCode and courseName. This should be applied to the tasks, as adding/deleting/re-arranging tasks should only be achieved in editMode.
 
 ##Third (Final) Milestone Video:

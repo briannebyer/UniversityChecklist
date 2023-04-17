@@ -37,8 +37,8 @@ struct DetailView: View {
                         .font(.caption)
                         .padding()
                         .foregroundColor(.gray)
-            }
-           
+                    
+                }
             }
             List {
                 ForEach(course.tasks) { task in
@@ -60,10 +60,16 @@ struct DetailView: View {
                     }
                     // similar to ContentView, but targets course tasks, removes task
                 }.onDelete { idx in
-                    course.tasks.remove(atOffsets: idx)
-                    // when in editing, allows user to move tasks
+                    // if in edit mode, user can delete tasks
+                    if mode?.wrappedValue == .active {
+                        course.tasks.remove(atOffsets: idx)
+                    }
+                    // Allows user to move tasks
                 }.onMove { idx, newOffset in
-                    course.tasks.move(fromOffsets: idx, toOffset: newOffset)
+                    // if in edit mode, user can re-arrange tasks
+                    if mode?.wrappedValue == .active {
+                        course.tasks.move(fromOffsets: idx, toOffset: newOffset)
+                    }
                 }
                 
                 Button(action: {
