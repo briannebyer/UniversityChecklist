@@ -115,6 +115,10 @@ Tagged commit as "milestone2" and tagged "milestone 1".
 Added icon for checklist application. 
 
 ### 17/4/23
-After reviewing Milestone 2 again, I noticed that the list and title should only be editable when user presses the edit button. Used @Environment to make a specific mode for editing. If mode is active, that is when the user can alter the courseCode and courseName. This should be applied to the tasks, as adding/deleting/re-arranging tasks should only be achieved in editMode.
+After reviewing Milestone 2 again, I noticed that the list and title should only be editable when user presses the edit button. Used @Environment to make a specific mode for editing. If mode is active, that is when the user can alter the courseCode and courseName. This should be applied to the tasks, as adding/deleting/re-arranging tasks should only be achieved in editMode. Successfully added to the onMove and onDelete, however, finding issues when user wants to add a new task. Changing TitleView may be difficult. This may need to be addressed later, as persistency of application is more important.
+
+Created func to get JSON file.
+Created func to load and save JSON file.
+Initialised use of funcs and data in DataModel struct.
 
 ##Third (Final) Milestone Video:

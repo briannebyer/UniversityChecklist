@@ -16,7 +16,8 @@ import Foundation
  - courseName: string representing the name of the course.
  - tasks: an array/list of StudyTask objects, representing study tasks associated to the course.
  */
-struct Study: Identifiable, Hashable {
+// added codeable in order to encode and decode JSON file
+struct Study: Identifiable, Hashable, Codable {
     var id = UUID()
     var courseCode: String
     var courseName: String
@@ -32,20 +33,58 @@ struct Study: Identifiable, Hashable {
   - description: string representing the what the task description.
   - isCompleted: bool representing whether task is completed (true) or incomplete (false).
   */
-struct StudyTask: Identifiable, Hashable {
+// added codeable in order to encode and decode JSON file
+struct StudyTask: Identifiable, Hashable, Codable {
     var id = UUID()
     var description: String
     var isCompleted: Bool
 }
 
+// func
+func getFile() -> URL? {
+    let fileName = "UniCoursesAndTasks.json"
+    let fm = FileManager.default
+    guard let url = fm.urls(for: .documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        .first else {
+        return nil
+        }
+    return url.appendingPathComponent(fileName)
+}
+    
 /**
  This struct represents the data model for the application.
  
  Parameters:
  - Courses: an array of 'Study' objects that represent each course.
  */
-struct DataModel {
+// add Codable in order to encode and decode for JSON file
+struct DataModel: Codable {
     var Courses: [Study]
+    init() {
+        Courses = []
+        load()
+    }
+    
+// load func for JSON
+    mutating func load() {
+        guard let url = getFile(),
+              let data = try? Data(contentsOf: url),
+              let datamodel = try? JSONDecoder().decode(DataModel.self, from: data) else {
+            self.Courses = testStudy
+            return
+        }
+        self.Courses = datamodel.Courses
+    }
+
+// save func for JSON
+    func save() {
+        guard let url = getFile(),
+              let data = try? JSONEncoder().encode(self)
+        else {
+            return
+        }
+        try? data.write(to: url)
+    }
 }
 
 // update testStudy, according to changes in new struct StudyTask
