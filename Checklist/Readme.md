@@ -113,3 +113,8 @@ Tagged commit as "milestone2" and tagged "milestone 1".
 
 ### 11/04/23
 Added icon for checklist application. 
+
+### 17/4/23
+After reviewing Milestone 2 again, I noticed that the list and title should only be editable when user presses the edit button. Used @Environment to make a specific mode for editing. If mode is active, that is when the user can alter the courseCode and courseName.
+
+##Third (Final) Milestone Video:

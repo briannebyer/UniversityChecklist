@@ -19,20 +19,26 @@ struct DetailView: View {
     @State var undoTasks: [StudyTask]?
     // for the ability to return to ContentView
     @Environment(\.presentationMode) var presentationMode
+    // for ability for user to enter Edit mode
+    @Environment(\.editMode) var mode
     
     var body: some View {
         VStack {
             TitleView(title: course.courseName, img: "star.fill")
-            Spacer()
-            HStack(alignment: .center) {
-                TextField("Course name?", text: $displayName)
-                    .font(.caption)
-                    .padding()
-                    .foregroundColor(.gray)
-                TextField("Course code?", text: $displayCode)
-                    .font(.caption)
-                    .padding()
-                    .foregroundColor(.gray)
+            
+            // if edit mode is active, user can edit course name and code
+            if mode?.wrappedValue == .active {
+                HStack(alignment: .center) {
+                    TextField("Course name?", text: $displayName)
+                        .font(.caption)
+                        .padding()
+                        .foregroundColor(.gray)
+                    TextField("Course code?", text: $displayCode)
+                        .font(.caption)
+                        .padding()
+                        .foregroundColor(.gray)
+            }
+           
             }
             List {
                 ForEach(course.tasks) { task in
