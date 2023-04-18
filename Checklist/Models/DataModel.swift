@@ -8,6 +8,45 @@
 import Foundation
 
 /**
+ This struct represents a task, it contains information about the task description, and whether the task has been completed.
+ 
+ Parameters:
+ - id: generated upon initialisation, is the UUID for the specific task.
+ - description: string representing the what the task description.
+ - isCompleted: bool representing whether task is completed (true) or incomplete (false).
+ */
+// added codeable in order to encode and decode JSON file
+class StudyTask: Codable, ObservableObject  {
+   var id = UUID()
+   @Published var description: String
+   @Published var isCompleted: Bool
+    
+    // enum
+    enum CodingKeys: CodingKey {
+        case description
+        case isCompleted
+
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(description, forKey: .description)
+        try container.encode(isCompleted, forKey: .isCompleted)
+        
+    }
+    required init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        description = try container.decode(String.self, forKey: .description)
+        isCompleted = try container.decode(Bool.self, forKey: .isCompleted)
+        
+    }
+    
+    init(description: String, isCompleted: Bool) {
+        self.description = description
+        self.isCompleted = isCompleted
+       
+    }
+}
+/**
  This struct represents a course, it contains information about the course code, course name and study tasks associated to the course.
  
  Parameters:
@@ -17,82 +56,40 @@ import Foundation
  - tasks: an array/list of StudyTask objects, representing study tasks associated to the course.
  */
 // added codeable in order to encode and decode JSON file
-class Study: Identifiable, Hashable, Codable {
+class Study: Codable, ObservableObject {
+    // do not need to publish id
     var id = UUID()
-    var courseCode: String
-    var courseName: String
-// removed previous variables, as they would be covered in the variable tasks
-    var tasks: [StudyTask]
+    // need to publish as they may change
+    @Published var courseCode: String
+    @Published var courseName: String
+    @Published var tasks: [StudyTask]
     
-    // allows creation of new instance of Study
-    init(courseCode: String, courseName: String, tasks: [StudyTask]) {
+    // enum
+    enum CodingKeys: CodingKey {
+        case courseCode
+        case courseName
+        case tasks
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(courseCode, forKey: .courseCode)
+        try container.encode(courseName, forKey: .courseName)
+        try container.encode(tasks, forKey: .tasks)
+    }
+    required init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        courseCode = try container.decode(String.self, forKey: .courseCode)
+        courseName = try container.decode(String.self, forKey: .courseName)
+        tasks = try container.decode([StudyTask].self, forKey: .tasks)
+    }
+    
+    init(courseCode: String, courseName: String, tasks:[StudyTask]) {
         self.courseCode = courseCode
         self.courseName = courseName
         self.tasks = tasks
     }
-    
-    // Equatable conformance
-    static func == (lhs: Study, rhs: Study) -> Bool {
-        return lhs.id == rhs.id &&
-        lhs.courseCode == rhs.courseCode &&
-        lhs.courseCode == rhs.courseName &&
-        lhs.tasks == rhs.tasks
-    }
-    // Hashable conformance
-    func hash(into hasher: inout Hasher){
-        hasher.combine(id)
-        hasher.combine(courseCode)
-        hasher.combine(courseName)
-        hasher.combine(tasks)
-    }
-
 }
-
- /**
-  This struct represents a task, it contains information about the task description, and whether the task has been completed.
-  
-  Parameters:
-  - id: generated upon initialisation, is the UUID for the specific task.
-  - description: string representing the what the task description.
-  - isCompleted: bool representing whether task is completed (true) or incomplete (false).
-  */
-// added codeable in order to encode and decode JSON file
-class StudyTask: Identifiable, Hashable, Codable {
-    var id = UUID()
-    var description: String
-    var isCompleted: Bool
-    
-    // allows creation of new instance
-    init(description: String, isCompleted: Bool){
-        self.description = description
-        self.isCompleted = isCompleted
-    }
-    
-    // Equatable conformance
-    static func == (lhs: StudyTask, rhs: StudyTask) -> Bool {
-        return lhs.id == rhs.id &&
-        lhs.description == rhs.description &&
-        lhs.isCompleted == rhs.isCompleted
-    }
-    // Hashable conformance
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-        hasher.combine(description)
-        hasher.combine(isCompleted)
-    }
-}
-
-// func
-func getFile() -> URL? {
-    let fileName = "UniCoursesAndTasks.json"
-    let fm = FileManager.default
-    guard let url = fm.urls(for: .documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
-        .first else {
-        return nil
-        }
-    return url.appendingPathComponent(fileName)
-}
-    
+ 
 /**
  This struct represents the data model for the application.
  
@@ -100,57 +97,89 @@ func getFile() -> URL? {
  - Courses: an array of 'Study' objects that represent each course.
  */
 // add Codable in order to encode and decode for JSON file
-// add Observable object
 class DataModel: Codable, ObservableObject {
-    var courses: [Study]
+    @Published var Courses: [Study]
+    // for loading screen later
+    @Published var loadingCompleted = false
+    static var model: DataModel?
     
-  //
-    init(courses: [Study]){
-        self.courses = courses
-        
-        // load data here?
-        // DataModel.load()
+    enum CodingKeys: CodingKey {
+        case Courses
     }
     
-    //
-    required init(from decoder:Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        courses = try container.decode([Study].self, forKey: .courses)
+    private init() {
+        Courses = []
+        loadSystem()
     }
     
-    //
+    static func getDataModel()->DataModel {
+        guard let currentInstance = DataModel.model else {
+            let newInstance = DataModel()
+            DataModel.model = newInstance
+            return newInstance
+        }
+        return currentInstance
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(courses, forKey: .courses)
+        try container.encode(Courses, forKey: .Courses)
     }
     
-    //
-    enum CodingKeys: String, CodingKey {
-        case courses
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        Courses = try container.decode([Study].self, forKey: .Courses)
     }
     
-// load func for JSON
-     class func load() -> DataModel {
-        guard let url = getFile(),
-              let data = try? Data(contentsOf: url),
-              let datamodel = try? JSONDecoder().decode(DataModel.self, from: data) else {
-            // use testStudy data if unable to get JSON file data
-            return DataModel(courses: testStudy)
+    func getFile()->URL? {
+        let fileName = "UniCoursesAndTasks.json"
+        let fm = FileManager.default
+        guard let url = fm.urls(for: .documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+            .first else {
+            return nil
+            }
+        return url.appendingPathComponent(fileName)
+        
+    }
+    
+    // save func for JSON
+        func save() {
+            guard let url = getFile(),
+                  let data = try? JSONEncoder().encode(self)
+            else {
+                return
+            }
+            try? data.write(to: url)
         }
-        return datamodel
+    
+    
+    // loading screen?
+    private func asyLoad() async ->DataModel? {
+        do{
+            guard let url = getFile() else { return nil }
+            let datastr = try Data(contentsOf: url)
+            let data = try JSONDecoder().decode(DataModel.self, from: datastr)
+            return data
+        }
+        catch {
+            print("load failed with error: \(error)")
+        }
+        return nil
+    }
+    
+    // loading screen + load normal file
+    func loadSystem() {
+        Task {
+            guard let data = await asyLoad() else {return}
+            try? await Task.sleep(nanoseconds: 1000_000_000)
+            DispatchQueue.main.async {
+                self.Courses = data.Courses
+                self.loadingCompleted = true
+            }
+        }
     }
 
-// save func for JSON
-    func save() {
-        guard let url = getFile(),
-              let data = try? JSONEncoder().encode(self)
-        else {
-            return
-        }
-        try? data.write(to: url)
-    }
 }
-
 // update testStudy, according to changes in new struct StudyTask
 var testStudy = [
     Study(courseCode: "3032ICT", courseName: "Big Data Analytics and Social Media", tasks: [
@@ -173,3 +202,4 @@ extension Study {
         return "\(courseCode) \(courseName)"
     }
 }
+

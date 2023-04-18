@@ -129,6 +129,9 @@ In order to add persistency to the DetailView(), there needs to be an instance o
 Error with Study and StudyTask classes not conforming to Hashable or Equatable protocols. SO for each, I added protocol conformance myself.
 Issue with using load func/method in DataModel class, commented out for time being.
 
+Created a new branch, as DataModel needs to be updated apropriately. 
+Re-arranged DataModel for better order and readability.
+Changed structs to classes, following Larry's example, with information missed in prior struct to class commit.
 
 
 ##Third (Final) Milestone Video:
