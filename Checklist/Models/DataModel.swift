@@ -17,12 +17,35 @@ import Foundation
  - tasks: an array/list of StudyTask objects, representing study tasks associated to the course.
  */
 // added codeable in order to encode and decode JSON file
-struct Study: Identifiable, Hashable, Codable {
+class Study: Identifiable, Hashable, Codable {
     var id = UUID()
     var courseCode: String
     var courseName: String
 // removed previous variables, as they would be covered in the variable tasks
     var tasks: [StudyTask]
+    
+    // allows creation of new instance of Study
+    init(courseCode: String, courseName: String, tasks: [StudyTask]) {
+        self.courseCode = courseCode
+        self.courseName = courseName
+        self.tasks = tasks
+    }
+    
+    // Equatable conformance
+    static func == (lhs: Study, rhs: Study) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.courseCode == rhs.courseCode &&
+        lhs.courseCode == rhs.courseName &&
+        lhs.tasks == rhs.tasks
+    }
+    // Hashable conformance
+    func hash(into hasher: inout Hasher){
+        hasher.combine(id)
+        hasher.combine(courseCode)
+        hasher.combine(courseName)
+        hasher.combine(tasks)
+    }
+
 }
 
  /**
@@ -34,10 +57,29 @@ struct Study: Identifiable, Hashable, Codable {
   - isCompleted: bool representing whether task is completed (true) or incomplete (false).
   */
 // added codeable in order to encode and decode JSON file
-struct StudyTask: Identifiable, Hashable, Codable {
+class StudyTask: Identifiable, Hashable, Codable {
     var id = UUID()
     var description: String
     var isCompleted: Bool
+    
+    // allows creation of new instance
+    init(description: String, isCompleted: Bool){
+        self.description = description
+        self.isCompleted = isCompleted
+    }
+    
+    // Equatable conformance
+    static func == (lhs: StudyTask, rhs: StudyTask) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.description == rhs.description &&
+        lhs.isCompleted == rhs.isCompleted
+    }
+    // Hashable conformance
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(description)
+        hasher.combine(isCompleted)
+    }
 }
 
 // func
@@ -58,22 +100,44 @@ func getFile() -> URL? {
  - Courses: an array of 'Study' objects that represent each course.
  */
 // add Codable in order to encode and decode for JSON file
-struct DataModel: Codable {
-    var Courses: [Study]
-    init() {
-        Courses = []
-        load()
+// add Observable object
+class DataModel: Codable, ObservableObject {
+    var courses: [Study]
+    
+  //
+    init(courses: [Study]){
+        self.courses = courses
+        
+        // load data here?
+        // DataModel.load()
+    }
+    
+    //
+    required init(from decoder:Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        courses = try container.decode([Study].self, forKey: .courses)
+    }
+    
+    //
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(courses, forKey: .courses)
+    }
+    
+    //
+    enum CodingKeys: String, CodingKey {
+        case courses
     }
     
 // load func for JSON
-    mutating func load() {
+     class func load() -> DataModel {
         guard let url = getFile(),
               let data = try? Data(contentsOf: url),
               let datamodel = try? JSONDecoder().decode(DataModel.self, from: data) else {
-            self.Courses = testStudy
-            return
+            // use testStudy data if unable to get JSON file data
+            return DataModel(courses: testStudy)
         }
-        self.Courses = datamodel.Courses
+        return datamodel
     }
 
 // save func for JSON

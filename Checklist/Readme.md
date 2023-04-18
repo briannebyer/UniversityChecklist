@@ -124,4 +124,11 @@ Initialised use of funcs and data in DataModel struct.
 Added model.save throughout ContentView, tested if it worked. It did.
 However, noticed when adding a new course, new courses do not have new tasks. Meaning, I had to remove the conditional (requiring at least 1 task) in DetailView, so that you can add tasks to new tasks.
 
+### 18/4/23
+In order to add persistency to the DetailView(), there needs to be an instance of the DataModel. To be able to pass this instance, I added Observable object to my DataModel struct. This means I had to change the DataModel struct to a class. Used @Published to monitor any changes and update views as required. This means I have to alter DataModel further, converting structs to classes and associated save & load funcs/methods. 
+Error with Study and StudyTask classes not conforming to Hashable or Equatable protocols. SO for each, I added protocol conformance myself.
+Issue with using load func/method in DataModel class, commented out for time being.
+
+
+
 ##Third (Final) Milestone Video:

@@ -22,6 +22,9 @@ struct DetailView: View {
     // for ability for user to enter Edit mode
     @Environment(\.editMode) var mode
     
+    // instance of DataModel
+//    @ObservedObject var dataModel: DataModel
+    
     var body: some View {
         VStack {
             TitleView(title: course.courseName, img: "star.fill")
