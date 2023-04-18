@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct ChecklistApp: App {
-    @State var model: DataModel = DataModel()
+    @StateObject var model: DataModel = DataModel(courses: [Study]())
     var body: some Scene {
         WindowGroup {
-            ContentView(model: $model)
+            // does not require binding anymore, as a class is a reference type
+            ContentView(model: model)
         }
     }
 }

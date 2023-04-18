@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct DetailView: View {
-    @Binding var course: Study
+    // instance of DataModel
+    @ObservedObject var dataModel: DataModel
+    // @Binding var course: Study
     @State var displayName: String = ""
     @State var displayCode: String = ""
     // allowing the user to add a new task and change said description

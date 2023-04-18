@@ -129,6 +129,11 @@ In order to add persistency to the DetailView(), there needs to be an instance o
 Error with Study and StudyTask classes not conforming to Hashable or Equatable protocols. SO for each, I added protocol conformance myself.
 Issue with using load func/method in DataModel class, commented out for time being.
 
+Need to ensure rest of application conforms to new DataModel changes. In CheckListApp, changed @State to @StateObject.
+ContentView() changed from @Binding to @ObservableState, only used binding to refer to the index (of specific course). In order to allow ContentView to pass data to DetailView, we use the index of the selected Study object, then pass it to DetailView (e.g. Big Data Analytics course is chosen, user is taken to associated DetailView). Added @ObservableState to DetailView, need to update rest of code. Error showing that it is expecting an @Environment, an editmode.
+
+
+
 
 
 ##Third (Final) Milestone Video:
