@@ -155,4 +155,8 @@ Realised that as soon as the user hits Reset, it resets tasks, instead of just s
 Next issue seen is that the add new task button and its textfield should be under the task list (when user presses Edit button). Currently sits at bottom of the screen. Moved block of code, now under tasks. However, unable to add new task to list of tasks now. Will return.
 Another issue is that changing courseName/courseCode doesnt show in ContentView until the user refreshes the app, will come back to that too.
 
+Deleted original commented code in DetailView.
+Another requirement of Milestone 3 is the loading screen. I set up the DataModel for the loading screen when updating all structs to classes. Used if data has loaded, show ContentView, else show ProgressView().
+
+
 ##Third (Final) Milestone Video:

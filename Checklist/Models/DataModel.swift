@@ -187,8 +187,6 @@ func saveData() {
     model.save()
 }
 
-
-
 // update testStudy, according to changes in new struct StudyTask
 var testStudy = [
     Study(courseCode: "3032ICT", courseName: "Big Data Analytics and Social Media", tasks: [
