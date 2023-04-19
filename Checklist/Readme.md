@@ -162,9 +162,9 @@ Commented on any complicated code, as well as classes, functions, methods etc. t
 Built DocC. Left documentation, as it was not mentioned in rubric.
 
 Tried debugging DetailView task, where task is unable to be added, using print statements. Toggle works but still doesn't show.
+Will keep the testing I did in Milestone2, as it is still relevant to current Milestone.
 
-Testing...
+Added video for Milestone 3.
 
-Youtube video link and add tag. Done!
-
-##Third (Final) Milestone Video:
+### please refer to the 'development' branch when viewing my local commits
+##Third (Final) Milestone Video: https://youtu.be/Kg82fpitYik
