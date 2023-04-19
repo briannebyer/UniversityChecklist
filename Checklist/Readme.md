@@ -158,6 +158,12 @@ Another issue is that changing courseName/courseCode doesnt show in ContentView 
 Deleted original commented code in DetailView.
 Another requirement of Milestone 3 is the loading screen. I set up the DataModel for the loading screen when updating all structs to classes. Used if data has loaded, show ContentView, else show ProgressView(). Customised loading screen to suit style of application.
 
-Complete DocC
+Commented on any complicated code, as well as classes, functions, methods etc. to use for DocC. Removed any irrelevant comments. Removed extension as it was not utilised within code.
+
+Testing...
+
+Go back to ContentView (courseName & CourseCode issue), and add new task issue. 
+
+Youtube video link and add tag. Done!
 
 ##Third (Final) Milestone Video:
