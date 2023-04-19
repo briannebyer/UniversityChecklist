@@ -165,6 +165,7 @@ Tried debugging DetailView task, where task is unable to be added, using print s
 Will keep the testing I did in Milestone2, as it is still relevant to current Milestone.
 
 Added video for Milestone 3.
+Tagged commit as "milestone3". 
 
 ### please refer to the 'development' branch when viewing my local commits
 ##Third (Final) Milestone Video: https://youtu.be/Kg82fpitYik
