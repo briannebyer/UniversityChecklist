@@ -156,7 +156,8 @@ Next issue seen is that the add new task button and its textfield should be unde
 Another issue is that changing courseName/courseCode doesnt show in ContentView until the user refreshes the app, will come back to that too.
 
 Deleted original commented code in DetailView.
-Another requirement of Milestone 3 is the loading screen. I set up the DataModel for the loading screen when updating all structs to classes. Used if data has loaded, show ContentView, else show ProgressView().
+Another requirement of Milestone 3 is the loading screen. I set up the DataModel for the loading screen when updating all structs to classes. Used if data has loaded, show ContentView, else show ProgressView(). Customised loading screen to suit style of application.
 
+Complete DocC
 
 ##Third (Final) Milestone Video:

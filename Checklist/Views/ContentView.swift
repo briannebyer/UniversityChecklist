@@ -50,7 +50,10 @@ struct ContentView: View {
                 // if data is not loaded, show progress view
             } else {
                 VStack {
-                    ProgressView()
+                    ProgressView().foregroundColor(.blue)
+                        .padding()
+                    Text("Loading...")
+                        .foregroundColor(.gray)
                     Spacer()
                 }
             }
