@@ -12,7 +12,6 @@ struct TitleView: View {
     @State var img: String
     var body: some View {
         HStack {
-                Spacer()
                 Text(title)
                     .font(.headline)
                     .fontWeight(.bold)

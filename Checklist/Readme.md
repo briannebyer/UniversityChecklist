@@ -140,6 +140,9 @@ In "experimental" DetailView, formatting is off and unable to toggle and add tas
 Added DetailTitleView, grouped under View for best practice. 
 
 ###19/04/23
-
+Alter DetailTitleView to not include star icon.
+Merging my original code that I commented out, with current code in DetailView, to assist in formatting the TextField for courseName and courseCode.
+Altered DetailView to improve overall formatting usability of app.
+Removed Spacer() in TitleView, as formatting was not suitable for other devices, only iPod touch (7th gen).
 
 ##Third (Final) Milestone Video:

@@ -24,14 +24,24 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            
+            // if edit mode is active, user can edit courseName and courseCode
             if mode?.wrappedValue == .active {
-                TextField("Rename Course?", text: $course.courseName)
-                TextField("Rename Code?", text: $course.courseCode)
+                HStack(alignment: .center){
+                    TextField("Rename course?", text: $course.courseName)
+                        .font(.caption)
+                        .padding()
+                        .foregroundColor(.gray)
+                    TextField("Rename code?", text: $course.courseCode)
+                        .font(.caption)
+                        .padding()
+                        .foregroundColor(.gray)
+                }
+                
             } else {
-                DetailTitleView(title: course.courseName, img: "star.fill")
-                Text(course.courseCode)
+                DetailTitleView(titleName: course.courseName, titleCode: course.courseCode)
+               // Text(course.courseCode)
             }
+            
         
             List {
                 ForEach(course.tasks, id:\.id) {task in

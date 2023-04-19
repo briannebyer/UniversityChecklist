@@ -8,18 +8,15 @@
 import SwiftUI
 
 struct DetailTitleView: View {
-    @State var title: String
-    @State var img: String
+    @State var titleName: String
+    @State var titleCode: String
     var body: some View {
-        HStack {
-                Spacer()
-                Text(title)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 30)
-                Image(systemName: img)
-                    .padding()
+        VStack {
+                Text(titleName)
+                .font(.headline)
+                .fontWeight(.bold)
+                Text(titleCode)
+                .font(.subheadline)
         }
     }
 }
