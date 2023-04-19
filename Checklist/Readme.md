@@ -145,4 +145,6 @@ Merging my original code that I commented out, with current code in DetailView, 
 Altered DetailView to improve overall formatting usability of app.
 Removed Spacer() in TitleView, as formatting was not suitable for other devices, only iPod touch (7th gen).
 
+Made sure adding tasks is only available to user in EditMode. However, issue with task description not showing, fixed by removed else statement and edit mode wrapper.
+
 ##Third (Final) Milestone Video:

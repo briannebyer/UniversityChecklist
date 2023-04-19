@@ -35,14 +35,13 @@ struct DetailView: View {
                         .font(.caption)
                         .padding()
                         .foregroundColor(.gray)
-                }
-                
-            } else {
-                DetailTitleView(titleName: course.courseName, titleCode: course.courseCode)
-               // Text(course.courseCode)
-            }
+                        }
+                        // need to saveData somewhere?
+                    } else {
+                        DetailTitleView(titleName: course.courseName, titleCode: course.courseCode)
+                        
+                        }
             
-        
             List {
                 ForEach(course.tasks, id:\.id) {task in
                     HStack {
@@ -59,15 +58,9 @@ struct DetailView: View {
                                 //Why won't this update when toggled?!?
                             }
                         
-                        
-                        if mode?.wrappedValue == .active {
-                            //Add code to change task decription in edit mode
-                        } else {
                             // shows task description
                             Text(task.description)
                                 .font(.subheadline)
-                        }
-                        
                     }
                     
                     // similar to ContentView, but targets course tasks, removes task
@@ -88,7 +81,8 @@ struct DetailView: View {
                     }
                 }
             }
-            VStack {
+            // add new task only appears in EditMode
+            if mode?.wrappedValue == .active {
                 Button(action: {
                     // add new task
                     let newTask = StudyTask(description: newTaskDescription, isCompleted: false)
@@ -102,11 +96,9 @@ struct DetailView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.black)
                             }
-                            
                         }
                 }
-            
-                
+        }
         
         // ensures default back button is hidden
         .navigationBarBackButtonHidden(true)
@@ -137,7 +129,6 @@ struct DetailView: View {
 //
 //        }
     }
-}
 }
 
 
