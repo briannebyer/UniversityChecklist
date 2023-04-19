@@ -43,7 +43,7 @@ struct ContentView: View {
             }
             .navigationBarItems(leading: EditButton(), trailing: Button("+"){
                 // added tasks: [] to the Study initializer, required parameter for the Study struct.
-                model.Courses.append(Study(courseCode: "New", courseName: "Course", tasks: []))
+                model.Courses.append(Study(courseCode: "XXXICT", courseName: "Course Name", tasks: []))
                 // save to JSON file
                 saveData()
             })

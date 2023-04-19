@@ -147,4 +147,11 @@ Removed Spacer() in TitleView, as formatting was not suitable for other devices,
 
 Made sure adding tasks is only available to user in EditMode. However, issue with task description not showing, fixed by removed else statement and edit mode wrapper.
 
+Adding back Edit and Undo functionality, using an Alert.
+If Reset, toggles all tasks back isComplete false. User has options to Cancel/Undo, keeping isComplete for each task in current state.
+However, changes to resetting tasks, or adding new tasks, is not currently saved when app refreshes. Added saveData to relevant areas of code to ensure persistency. Noticed Reset button works, but using Undo does not return task to previous toggle state.
+Realised that as soon as the user hits Reset, it resets tasks, instead of just showing alert. Changed it so that the Reset only show Alert, by choosing Confirm user resets tasks and that is saved to JSON. Undo does nothing, and ensures tasks stay in current state.
+
+
+
 ##Third (Final) Milestone Video:

@@ -87,6 +87,8 @@ struct DetailView: View {
                     // add new task
                     let newTask = StudyTask(description: newTaskDescription, isCompleted: false)
                     course.tasks.append(newTask)
+                    // save to JSON file
+                    saveData()
                     // reset new task description, for when a new task, with a new description is added
                     newTaskDescription = ""
                         }){
@@ -113,8 +115,45 @@ struct DetailView: View {
             trailing: HStack {
                 // removed conditional for EditButton
                EditButton()
+                Button(action: {
+                        // show confirmation dialog
+                                    showResetConfirmation = true
+                                    // stores current state of the tasks
+                                    //undoTasks = course.tasks
+                                    // resets by going through all tasks in course, by setting isCompleted to false
+                                    //for i in 0..<course.tasks.count {
+                                      //  course.tasks[i].isCompleted = false
+                                  //  }
+                                }) {
+                                    Text("Reset")
+                                }
+                                //
+                                .disabled(course.tasks.count == 0)
+                                .alert(isPresented: $showResetConfirmation) {
+                                    Alert(
+                                        title: Text("Reset Checklist"),
+                                        message: Text("Are you sure you want to reset the checklist?"),
+                                        primaryButton: .destructive(Text("Reset")) {
+                                            // resets the tasks
+                                            undoTasks = course.tasks
+                                            for i in 0..<course.tasks.count {
+                                                // goes through all tasks in course, by settings isCompleted to false
+                                                course.tasks[i].isCompleted = false
+                                                // save to JSON file
+                                                saveData()
+                                            }
+                                        },
+                                        // restores to previous state if user clicks cancel
+                                        secondaryButton: .cancel(Text("Undo")) {
+                                            //course.tasks = undoTasks ?? course.tasks
+                                            // save to JSON file
+                                            //saveData()
+                                        }
+                                    )
+                                }
+                            }
+                    )
             }
-        )
 //        .onAppear {
 //            tmpName = course.courseName
 //            tmpCode = course.courseCode
@@ -128,7 +167,6 @@ struct DetailView: View {
 //            saveData()
 //
 //        }
-    }
 }
 
 
