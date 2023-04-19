@@ -129,9 +129,17 @@ In order to add persistency to the DetailView(), there needs to be an instance o
 Error with Study and StudyTask classes not conforming to Hashable or Equatable protocols. SO for each, I added protocol conformance myself.
 Issue with using load func/method in DataModel class, commented out for time being.
 
-Created a new branch, as DataModel needs to be updated apropriately. 
+Created a new branch, as DataModel needs to be updated apropriately. I believe I was heading in the wrong direction for my application.
 Re-arranged DataModel for better order and readability.
-Changed structs to classes, following Larry's example, with information missed in prior struct to class commit.
+Changed structs to classes, following Larry's example, with the information I missed in prior struct to class commit.
+
+We altered ContentView and DetailView, to support the updated DataModel (e.g. from Binding to ObservableState) I am able to save changes now, however, there is still a delay in updating the courseName and courseCode in DetailView. I still need to go back to ContentView and then return, if the user updates these variables. 
+Experimented with current issues, by re-building DetailView and changing specific code. Put original code in comments down the bottom.
+By experimenting, able to allow the courseName and courseCode to be instantly shown in DetailView, instead of having to return to ContentView. However, is not showing in ContentView anymore. 
+In "experimental" DetailView, formatting is off and unable to toggle and add tasks correctly.
+Added DetailTitleView, grouped under View for best practice. 
+
+###19/04/23
 
 
 ##Third (Final) Milestone Video:

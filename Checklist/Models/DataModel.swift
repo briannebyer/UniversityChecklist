@@ -16,7 +16,7 @@ import Foundation
  - isCompleted: bool representing whether task is completed (true) or incomplete (false).
  */
 // added codeable in order to encode and decode JSON file
-class StudyTask: Codable, ObservableObject  {
+class StudyTask: Codable, ObservableObject {
    var id = UUID()
    @Published var description: String
    @Published var isCompleted: Bool
@@ -144,12 +144,13 @@ class DataModel: Codable, ObservableObject {
     
     // save func for JSON
         func save() {
-            guard let url = getFile(),
-                  let data = try? JSONEncoder().encode(self)
-            else {
-                return
+            do{
+                guard let url = getFile() else { return }
+                let data = try JSONEncoder().encode(self)
+                try data.write(to: url)
+            } catch {
+                print("save failed with error: \(error)")
             }
-            try? data.write(to: url)
         }
     
     
@@ -178,8 +179,16 @@ class DataModel: Codable, ObservableObject {
             }
         }
     }
-
 }
+
+// func save
+func saveData() {
+    let model = DataModel.getDataModel()
+    model.save()
+}
+
+
+
 // update testStudy, according to changes in new struct StudyTask
 var testStudy = [
     Study(courseCode: "3032ICT", courseName: "Big Data Analytics and Social Media", tasks: [

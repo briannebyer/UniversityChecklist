@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Binding var model: DataModel
+    @ObservedObject var model: DataModel
     var body: some View {
         NavigationView {
             VStack {
@@ -16,10 +16,11 @@ struct ContentView: View {
                 TitleView(title: "University Courses", img: "book")
                 
                 List {
-                    ForEach($model.Courses,id:\.self) {
+                    // remove binding as not needed, using Observable & Publish
+                    ForEach(model.Courses, id:\.id) {
                         // studyTask not defined in the ForEach loop, changed to $course instead
-                        $course in
-                        NavigationLink(destination: DetailView(course: $course)){
+                        course in
+                        NavigationLink(destination: DetailView(course: course)){
                             VStack(alignment: .leading){
                                 Text(course.courseCode)
                                     .font(.subheadline)
@@ -31,11 +32,11 @@ struct ContentView: View {
                     }.onDelete { idx in
                         model.Courses.remove(atOffsets: idx)
                         // save to JSON file
-                        model.save()
+                        saveData()
                     }.onMove { idx, i in
                         model.Courses.move(fromOffsets: idx, toOffset: i)
                         // save to JSON file
-                        model.save()
+                        saveData()
                     }
                     // ensures TitleView and navigationBarItems look aesthetically pleasing
                 }.navigationBarTitle("", displayMode: .inline)
@@ -44,7 +45,7 @@ struct ContentView: View {
                 // added tasks: [] to the Study initializer, required parameter for the Study struct.
                 model.Courses.append(Study(courseCode: "New", courseName: "Course", tasks: []))
                 // save to JSON file
-                model.save()
+                saveData()
             })
         }
     }
