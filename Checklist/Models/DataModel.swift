@@ -86,9 +86,9 @@ class StudyTask: Codable, ObservableObject {
  - Parameter courseName: string representing the name of the course.
  - Parameter tasks: an array of StudyTask objects, representing study tasks associated to the course.
  
- - Remark:class conforms to the `Codable` protocol to allow for encoding and decoding of JSON files.
- - Important: `id` property is generated automatically and does not need to be published. The `courseCode`, `courseName`, and `tasks` properties are marked with `@Published` as they may change.
- - Requires: `courseCode` and `courseName` should not be empty strings.
+ - Remark:class conforms to the Codable protocol to allow for encoding and decoding of JSON files.
+ - Important: id property is generated automatically and does not need to be published. The courseCode, courseName, and tasks properties are marked with @Published as they may change.
+ - Requires: courseCode and courseName should not be empty strings.
  
 */
 class Study: Codable, ObservableObject {
@@ -146,7 +146,7 @@ class Study: Codable, ObservableObject {
 
     - Parameter courseCode: code of the course.
     - Parameter courseName: name of the course.
-    - Parameter tasks: array of `StudyTask` objects representing study tasks associated with the course.
+    - Parameter tasks: array of StudyTask objects representing study tasks associated with the course.
 
     */
     init(courseCode: String, courseName: String, tasks:[StudyTask]) {
@@ -157,9 +157,9 @@ class Study: Codable, ObservableObject {
 }
  
 /**
- This class represents the data model for the application. It manages study tasks and courses. It contains an array of `Study` objects, representing all the courses and associated study tasks. Additionally, it has a `loadingCompleted` property that tracks whether the data model has finished loading data. Finally, it has a `model` static property that can be used to access a shared instance of the data model.
+ This class represents the data model for the application. It manages study tasks and courses. It contains an array of Study objects, representing all the courses and associated study tasks. Additionally, it has a loadingCompleted property that tracks whether the data model has finished loading data. Finally, it has a model static property that can be used to access a shared instance of the data model.
 
- - Parameter Courses: array of `Study` objects representing all the courses and associated study tasks.
+ - Parameter Courses: array of Study objects representing all the courses and associated study tasks.
  - Parameter loadingCompleted: boolean indicating whether the data model has finished loading data from an external source.
  - Parameter model: static property that can be used to access a shared instance of the data model.
  
@@ -304,7 +304,6 @@ func saveData() {
     let model = DataModel.getDataModel()
     model.save()
 }
-
 
 var testStudy = [
     Study(courseCode: "3032ICT", courseName: "Big Data Analytics and Social Media", tasks: [

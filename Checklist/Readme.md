@@ -159,6 +159,8 @@ Deleted original commented code in DetailView.
 Another requirement of Milestone 3 is the loading screen. I set up the DataModel for the loading screen when updating all structs to classes. Used if data has loaded, show ContentView, else show ProgressView(). Customised loading screen to suit style of application.
 
 Commented on any complicated code, as well as classes, functions, methods etc. to use for DocC. Removed any irrelevant comments. Removed extension as it was not utilised within code.
+Built DocC. Left documentation, as it was not mentioned in rubric.
+
 
 Testing...
 

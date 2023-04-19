@@ -9,6 +9,6 @@ To be completed for Assignment 1?
 
 ## Topics
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
+### Group
 
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+- ``Symbol``

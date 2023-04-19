@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var course: Study
+    
     @State var tmpName: String = ""
     @State var tmpCode: String = ""
     // allowing the user to add a new task and change said description
@@ -54,7 +55,9 @@ struct DetailView: View {
                             // when tapped by user, toggles if task is completed or not
                                 .onTapGesture {
                                     // maybe have a function in DataModel for toggle checkbox?
-                                    task.isCompleted = !task.isCompleted
+                                    print(task.isCompleted)
+                                    task.isCompleted.toggle()
+                                    print(task.isCompleted)
                                     saveData()
                                 }
                             
