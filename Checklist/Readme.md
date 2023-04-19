@@ -161,10 +161,9 @@ Another requirement of Milestone 3 is the loading screen. I set up the DataModel
 Commented on any complicated code, as well as classes, functions, methods etc. to use for DocC. Removed any irrelevant comments. Removed extension as it was not utilised within code.
 Built DocC. Left documentation, as it was not mentioned in rubric.
 
+Tried debugging DetailView task, where task is unable to be added, using print statements. Toggle works but still doesn't show.
 
 Testing...
-
-Go back to ContentView (courseName & CourseCode issue), and add new task issue. 
 
 Youtube video link and add tag. Done!
 

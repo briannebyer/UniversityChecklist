@@ -55,9 +55,9 @@ struct DetailView: View {
                             // when tapped by user, toggles if task is completed or not
                                 .onTapGesture {
                                     // maybe have a function in DataModel for toggle checkbox?
-                                    print(task.isCompleted)
+//                                    print(task.isCompleted)
                                     task.isCompleted.toggle()
-                                    print(task.isCompleted)
+//                                    print(task.isCompleted)  // used to confirm onTapGesture toggle was working during debugging
                                     saveData()
                                 }
                             
