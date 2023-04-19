@@ -42,27 +42,27 @@ struct DetailView: View {
                         
                         }
             
-            List {
-                ForEach(course.tasks, id:\.id) {task in
-                    HStack {
-                        // if task is ticked/completed, shows a filled checkmark, if not completed, shows unfilled checkmark
-                        Image(systemName: task.isCompleted ? "checkmark.circle.fill": "circle")
-                        // makes checkmark blue
-                            .foregroundColor(.blue)
-                        
-                        // when tapped by user, toggles if task is completed or not
-                            .onTapGesture {
-                                //Maybe have a function in DataModel for toggle checkbox?
-                                task.isCompleted = !task.isCompleted
-                                saveData()
-                                //Why won't this update when toggled?!?
-                            }
-                        
-                            // shows task description
-                            Text(task.description)
-                                .font(.subheadline)
-                    }
-                    
+            VStack {
+                List {
+                    ForEach(course.tasks, id:\.id) {task in
+                        HStack {
+                            // if task is ticked/completed, shows a filled checkmark, if not completed, shows unfilled checkmark
+                            Image(systemName: task.isCompleted ? "checkmark.circle.fill": "circle")
+                            // makes checkmark blue
+                                .foregroundColor(.blue)
+                            
+                            // when tapped by user, toggles if task is completed or not
+                                .onTapGesture {
+                                    // maybe have a function in DataModel for toggle checkbox?
+                                    task.isCompleted = !task.isCompleted
+                                    saveData()
+                                }
+                            
+                                // shows task description
+                                Text(task.description)
+                                    .font(.subheadline)
+                        }
+                                            
                     // similar to ContentView, but targets course tasks, removes task
                 }.onDelete { idx in
                     // if in edit mode, user can delete tasks
@@ -71,7 +71,7 @@ struct DetailView: View {
                         // save to JSON file
                         saveData()
                     }
-                    // Allows user to move tasks
+                    // allows user to move tasks
                 }.onMove { idx, newOffset in
                     // if in edit mode, user can re-arrange tasks
                     if mode?.wrappedValue == .active {
@@ -79,28 +79,27 @@ struct DetailView: View {
                         // save to JSON file
                         saveData()
                     }
-                }
-            }
-            // add new task only appears in EditMode
-            if mode?.wrappedValue == .active {
-                Button(action: {
-                    // add new task
-                    let newTask = StudyTask(description: newTaskDescription, isCompleted: false)
-                    course.tasks.append(newTask)
-                    // save to JSON file
-                    saveData()
-                    // reset new task description, for when a new task, with a new description is added
-                    newTaskDescription = ""
-                        }){
-                            HStack{
-                                Image(systemName: "plus.circle.fill")
-                                TextField("New task?", text: $newTaskDescription)
-                                    .font(.subheadline)
-                                    .foregroundColor(.black)
-                            }
+                } // add new task only appears in EditMode
+                    if mode?.wrappedValue == .active {
+                        Button(action: {
+                            // add new task
+                            let newTask = StudyTask(description: newTaskDescription, isCompleted: false)
+                            course.tasks.append(newTask)
+                            // save to JSON file
+                            saveData()
+                                // reset new task description, for when a new task, with a new description is added
+                                newTaskDescription = ""
+                                                }){
+                                                    HStack{
+                                                        Image(systemName: "plus.circle.fill")
+                                                        TextField("New task?", text: $newTaskDescription)
+                                                            .font(.subheadline)
+                                                            .foregroundColor(.black)
+                                                            }
+                                                    }
+                                            }
+                                }
                         }
-                }
-        }
         
         // ensures default back button is hidden
         .navigationBarBackButtonHidden(true)
@@ -115,19 +114,9 @@ struct DetailView: View {
             trailing: HStack {
                 // removed conditional for EditButton
                EditButton()
-                Button(action: {
-                        // show confirmation dialog
-                                    showResetConfirmation = true
-                                    // stores current state of the tasks
-                                    //undoTasks = course.tasks
-                                    // resets by going through all tasks in course, by setting isCompleted to false
-                                    //for i in 0..<course.tasks.count {
-                                      //  course.tasks[i].isCompleted = false
-                                  //  }
-                                }) {
+                Button(action: { showResetConfirmation = true}) {
                                     Text("Reset")
                                 }
-                                //
                                 .disabled(course.tasks.count == 0)
                                 .alert(isPresented: $showResetConfirmation) {
                                     Alert(
@@ -143,17 +132,15 @@ struct DetailView: View {
                                                 saveData()
                                             }
                                         },
-                                        // restores to previous state if user clicks cancel
                                         secondaryButton: .cancel(Text("Undo")) {
-                                            //course.tasks = undoTasks ?? course.tasks
-                                            // save to JSON file
-                                            //saveData()
+                                            // does nothing, does not reset
                                         }
                                     )
                                 }
                             }
                     )
             }
+    }
 //        .onAppear {
 //            tmpName = course.courseName
 //            tmpCode = course.courseCode

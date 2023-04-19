@@ -152,6 +152,7 @@ If Reset, toggles all tasks back isComplete false. User has options to Cancel/Un
 However, changes to resetting tasks, or adding new tasks, is not currently saved when app refreshes. Added saveData to relevant areas of code to ensure persistency. Noticed Reset button works, but using Undo does not return task to previous toggle state.
 Realised that as soon as the user hits Reset, it resets tasks, instead of just showing alert. Changed it so that the Reset only show Alert, by choosing Confirm user resets tasks and that is saved to JSON. Undo does nothing, and ensures tasks stay in current state.
 
-
+Next issue seen is that the add new task button and its textfield should be under the task list (when user presses Edit button). Currently sits at bottom of the screen. Moved block of code, now under tasks. However, unable to add new task to list of tasks now. Will return.
+Another issue is that changing courseName/courseCode doesnt show in ContentView until the user refreshes the app, will come back to that too.
 
 ##Third (Final) Milestone Video:
